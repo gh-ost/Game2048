@@ -13,7 +13,7 @@ import java.util.LinkedList;
 import java.util.List;
 import javax.swing.JPanel;
 
-/**
+/** 
  *
  * @author Sanzhar, Nursultan, Asset, Zinel, Sabira
  */
