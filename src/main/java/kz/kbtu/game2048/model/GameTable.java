@@ -15,7 +15,7 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author Sanzhar
+ * @author Sanzhar, Nursultan, Asset, Zinel, Sabira
  */
 public class GameTable extends JPanel {
 
