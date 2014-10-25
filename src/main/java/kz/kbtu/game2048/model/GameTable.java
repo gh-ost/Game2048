@@ -15,12 +15,12 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author Sanzhar
+ * @author Sanzhar, Asset, Nursultan, Sabira, Aigerim
  */
 public class GameTable extends JPanel {
 
     private static final Color BG_COLOR = new Color(0xbbada0);
-    private static final String FONT_NAME = "Arial";
+    private static final String FONT_NAME = "Verdana";
     private static final int TILE_SIZE = 64;
     private static final int TILES_MARGIN = 16;
     private GameTile[] myTiles;
