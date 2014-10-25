@@ -24,8 +24,8 @@ public class GameTable extends JPanel {
     private static final int TILE_SIZE = 64;
     private static final int TILES_MARGIN = 16;
     private GameTile[] myTiles;
-    boolean myWin = false;
-    boolean myLose = false;
+    boolean win = false;
+    boolean lose = false;
     int myScore = 0;
 
     public GameTable() {
@@ -37,10 +37,10 @@ public class GameTable extends JPanel {
                     resetGame();
                 }
                 if (!canMove()) {
-                    myLose = true;
+                    lose = true;
                 }
 
-                if (!myWin && !myLose) {
+                if (!win && !lose) {
                     switch (e.getKeyCode()) {
                         case KeyEvent.VK_LEFT:
                             left();
@@ -57,8 +57,8 @@ public class GameTable extends JPanel {
                     }
                 }
 
-                if (!myWin && !canMove()) {
-                    myLose = true;
+                if (!win && !canMove()) {
+                    lose = true;
                 }
 
                 repaint();
@@ -69,8 +69,8 @@ public class GameTable extends JPanel {
 
     public void resetGame() {
         myScore = 0;
-        myWin = false;
-        myLose = false;
+        win = false;
+        lose = false;
         myTiles = new GameTile[4 * 4];
         for (int i = 0; i < myTiles.length; i++) {
             myTiles[i] = new GameTile();
@@ -221,7 +221,7 @@ public class GameTable extends JPanel {
                 myScore += num;
                 int ourTarget = 2048;
                 if (num == ourTarget) {
-                    myWin = true;
+                    win = true;
                 }
                 i++;
             }
@@ -267,6 +267,7 @@ public class GameTable extends JPanel {
 
     private void drawTile(Graphics g2, GameTile tile, int x, int y) {
         Graphics2D g = ((Graphics2D) g2);
+		
         g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         g.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_NORMALIZE);
         int value = tile.value;
@@ -289,19 +290,19 @@ public class GameTable extends JPanel {
             g.drawString(s, xOffset + (TILE_SIZE - w) / 2, yOffset + TILE_SIZE - (TILE_SIZE - h) / 2 - 2);
         }
 
-        if (myWin || myLose) {
+        if (win || lose) {
             g.setColor(new Color(255, 255, 255, 30));
             g.fillRect(0, 0, getWidth(), getHeight());
             g.setColor(new Color(78, 139, 202));
             g.setFont(new Font(FONT_NAME, Font.BOLD, 48));
-            if (myWin) {
+            if (win) {
                 g.drawString("You won!", 68, 150);
             }
-            if (myLose) {
+            if (lose) {
                 g.drawString("Game over!", 50, 130);
                 g.drawString("You lose!", 64, 200);
             }
-            if (myWin || myLose) {
+            if (win || lose) {
                 g.setFont(new Font(FONT_NAME, Font.PLAIN, 16));
                 g.setColor(new Color(128, 128, 128, 128));
                 g.drawString("Press ESC to play again", 80, getHeight() - 40);
