@@ -28,6 +28,9 @@ public class GameTable extends JPanel {
     boolean lose = false;
     int myScore = 0;
 
+	/*
+	 Method for initializing game
+	*/
     public GameTable() {
         setFocusable(true);
         addKeyListener(new KeyAdapter() {
@@ -67,6 +70,9 @@ public class GameTable extends JPanel {
         resetGame();
     }
 
+	/*
+	 Method for resetting game
+	*/
     public void resetGame() {
         myScore = 0;
         win = false;
@@ -79,6 +85,9 @@ public class GameTable extends JPanel {
         addTile();
     }
 
+	/*
+	 Method for left move
+	*/
     public void left() {
         boolean needAddTile = false;
         for (int i = 0; i < 4; i++) {
@@ -95,18 +104,27 @@ public class GameTable extends JPanel {
         }
     }
 
+	/*
+	 Method for right move
+	*/
     public void right() {
         myTiles = rotate(180);
         left();
         myTiles = rotate(180);
     }
 
+	/*
+	 Method for up move
+	*/
     public void up() {
         myTiles = rotate(270);
         left();
         myTiles = rotate(90);
     }
 
+	/*
+	 Method for down move
+	*/
     public void down() {
         myTiles = rotate(90);
         left();
