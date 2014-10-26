@@ -22,7 +22,7 @@ public class GameTable extends JPanel {
     private static final Color BG_COLOR = new Color(0xbbada0);
     private static final String FONT_NAME = "Verdana";
     private static final int TILE_SIZE = 64;
-    private static final int TILES_MARGIN = 16;
+    private static final int TILES_MARGIN = 13;
     private GameTile[] myTiles;
     boolean win = false;
     boolean lose = false;
@@ -273,14 +273,29 @@ public class GameTable extends JPanel {
 
     @Override
     public void paint(Graphics g) {
-        super.paint(g);
+      /*  super.paint(g);
         g.setColor(BG_COLOR);
         g.fillRect(0, 0, this.getSize().width, this.getSize().height);
         for (int y = 0; y < 4; y++) {
             for (int x = 0; x < 4; x++) {
                 drawTile(g, myTiles[x + y * 4], x, y);
             }
+        }*/
+         super.paint(g);
+        g.setColor(BG_COLOR);
+        //g.fillRect(0, 0, this.getSize().width, this.getSize().height);
+        g.fillRoundRect(20, 150, 320, 320,10,10);
+        for (int y = 0; y < 4; y++) {
+            for (int x = 0; x < 4; x++) {
+                drawTile(g, myTiles[x + y * 4], x, y);
+            }
         }
+        g.setColor(new Color(230,197,28));//(255,215,0)); 240,220,9
+        //g.fillRect(10, 10, 100, 100);
+        g.fillRoundRect(20, 10, 100, 90, 10, 10);
+        g.setColor(Color.white);
+        g.setFont(new Font(FONT_NAME, Font.BOLD, 35));
+        g.drawString("2048", 20, 65);
     }
 
     private void drawTile(Graphics g2, GameTile tile, int x, int y) {
@@ -292,9 +307,11 @@ public class GameTable extends JPanel {
         int xOffset = offsetCoors(x);
         int yOffset = offsetCoors(y);
         g.setColor(tile.getBackground());
-        g.fillRoundRect(xOffset, yOffset, TILE_SIZE, TILE_SIZE, 14, 14);
+        //g.fillRoundRect(xOffset, yOffset, TILE_SIZE, TILE_SIZE, 14, 14);
+         g.fillRoundRect(xOffset+20, yOffset+150, TILE_SIZE, TILE_SIZE, 8, 8);
         g.setColor(tile.getForeground());
-        final int size = value < 100 ? 36 : value < 1000 ? 32 : 24;
+       // final int size = value < 100 ? 36 : value < 1000 ? 32 : 24;
+        final int size = value < 100 ? 40 : value < 1000 ? 35 : 30;
         final Font font = new Font(FONT_NAME, Font.BOLD, size);
         g.setFont(font);
 
@@ -305,7 +322,8 @@ public class GameTable extends JPanel {
         final int h = -(int) fm.getLineMetrics(s, g).getBaselineOffsets()[2];
 
         if (value != 0) {
-            g.drawString(s, xOffset + (TILE_SIZE - w) / 2, yOffset + TILE_SIZE - (TILE_SIZE - h) / 2 - 2);
+           // g.drawString(s, xOffset + (TILE_SIZE - w) / 2, yOffset + TILE_SIZE - (TILE_SIZE - h) / 2 - 2);
+            g.drawString(s, xOffset + 20+(TILE_SIZE - w) / 2, yOffset + 150+TILE_SIZE - (TILE_SIZE - h) / 2 - 2);
         }
 
         if (win || lose) {
@@ -326,8 +344,23 @@ public class GameTable extends JPanel {
                 g.drawString("Press ESC to play again", 80, getHeight() - 40);
             }
         }
-        g.setFont(new Font(FONT_NAME, Font.PLAIN, 18));
-        g.drawString("Score: " + myScore, 200, 365);
+        //g.setFont(new Font(FONT_NAME, Font.PLAIN, 18));
+        //g.drawString("Score: " + myScore, 200, 365);
+              g.setColor(BG_COLOR);
+        g.fillRoundRect(130, 10, 100, 90, 10, 10);    
+        g.setColor(Color.white);
+        g.setFont(new Font(FONT_NAME, Font.BOLD, 25));
+        g.setColor(new Color(0xede0c8));
+        g.drawString("SCORE", 135, 50);
+        g.setColor(Color.white);
+        g.drawString(""+myScore, 140, 80);
+        
+        
+        g.setColor(BG_COLOR);
+        g.fillRoundRect(240, 10, 100, 90, 10, 10);
+        g.setColor(new Color(0xede0c8));
+        g.setFont(new Font(FONT_NAME, Font.BOLD, 25));
+        g.drawString("BEST", 253, 50);
 
     }
 
