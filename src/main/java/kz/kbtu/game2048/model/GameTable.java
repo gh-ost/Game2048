@@ -1,5 +1,5 @@
 package kz.kbtu.game2048.model;
-
+//comment
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontMetrics;
@@ -18,7 +18,6 @@ import javax.swing.JPanel;
  * @author Sanzhar, Asset, Nursultan, Sabira, Aigerim
  */
 public class GameTable extends JPanel {
-
     private static final Color BG_COLOR = new Color(0xbbada0);
     private static final String FONT_NAME = "Verdana";
     private static final int TILE_SIZE = 64;
@@ -27,7 +26,6 @@ public class GameTable extends JPanel {
     boolean win = false;
     boolean lose = false;
     int myScore = 0;
-
 	/*
 	 Method for initializing game
 	*/
@@ -69,7 +67,6 @@ public class GameTable extends JPanel {
         });
         resetGame();
     }
-
 	/*
 	 Method for resetting game
 	*/
@@ -80,11 +77,11 @@ public class GameTable extends JPanel {
         myTiles = new GameTile[4 * 4];
         for (int i = 0; i < myTiles.length; i++) {
             myTiles[i] = new GameTile();
+           // System.out.print(myTiles.length);
         }
         addTile();
         addTile();
     }
-
 	/*
 	 Method for left move
 	*/
@@ -103,7 +100,6 @@ public class GameTable extends JPanel {
             addTile();
         }
     }
-
 	/*
 	 Method for right move
 	*/
@@ -112,7 +108,6 @@ public class GameTable extends JPanel {
         left();
         myTiles = rotate(180);
     }
-
 	/*
 	 Method for up move
 	*/
@@ -132,7 +127,9 @@ public class GameTable extends JPanel {
     }
 
     private GameTile tileAt(int x, int y) {
+      //  System.out.println("tile "+(x + y * 4));
         return myTiles[x + y * 4];
+        
     }
 
     private void addTile() {
@@ -306,6 +303,7 @@ public class GameTable extends JPanel {
         int value = tile.value;
         int xOffset = offsetCoors(x);
         int yOffset = offsetCoors(y);
+        System.out.println("offset"+xOffset+" "+x+" "+yOffset+" "+y);
         g.setColor(tile.getBackground());
         //g.fillRoundRect(xOffset, yOffset, TILE_SIZE, TILE_SIZE, 14, 14);
          g.fillRoundRect(xOffset+20, yOffset+150, TILE_SIZE, TILE_SIZE, 8, 8);
