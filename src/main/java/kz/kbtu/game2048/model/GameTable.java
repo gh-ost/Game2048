@@ -303,7 +303,7 @@ public class GameTable extends JPanel {
         int value = tile.value;
         int xOffset = offsetCoors(x);
         int yOffset = offsetCoors(y);
-        System.out.println("offset"+xOffset+" "+x+" "+yOffset+" "+y);
+//        System.out.println("offset"+xOffset+" "+x+" "+yOffset+" "+y);
         g.setColor(tile.getBackground());
         //g.fillRoundRect(xOffset, yOffset, TILE_SIZE, TILE_SIZE, 14, 14);
          g.fillRoundRect(xOffset+20, yOffset+150, TILE_SIZE, TILE_SIZE, 8, 8);
